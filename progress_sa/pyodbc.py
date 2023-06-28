@@ -9,6 +9,7 @@ class Progress_pyodbc(PyODBCConnector, ProgressDialect):
     # For OpenEdge 10. Progress 9 uses Progress_SQL92_Driver.
     pyodbc_driver_name = 'Progress_SQL_Driver'
     execution_ctx_cls = ProgressExecutionContext_pyodbc
+    supports_statement_cache = True
 
     def __init__(self, description_encoding='latin-1', **params):
         super(Progress_pyodbc, self).__init__(**params)
