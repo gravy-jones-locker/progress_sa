@@ -112,7 +112,7 @@ class ProgressSQLCompiler(compiler.SQLCompiler):
             s += "TOP %s " % (select._limit,)
         return s
 
-    def limit_clause(self, select):
+    def limit_clause(self, select, **kw):
         return ""
 
 class ProgressDDLCompiler(compiler.DDLCompiler):
