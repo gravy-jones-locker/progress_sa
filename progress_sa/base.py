@@ -105,7 +105,15 @@ class ProgressTypeCompiler(compiler.GenericTypeCompiler):
     pass
 
 class ProgressSQLCompiler(compiler.SQLCompiler):
-    pass
+
+    def get_select_precolumns(self, select):
+        s = compiler.SQLCompiler.get_select_precolumns(self, select)
+        if select._has_row_limiting_clause:
+            s += "TOP %s " % (select._limit,)
+        return s
+
+    def limit_clause(self, select):
+        return ""
 
 class ProgressDDLCompiler(compiler.DDLCompiler):
     pass
