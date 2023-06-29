@@ -106,8 +106,8 @@ class ProgressTypeCompiler(compiler.GenericTypeCompiler):
 
 class ProgressSQLCompiler(compiler.SQLCompiler):
 
-    def get_select_precolumns(self, select):
-        s = compiler.SQLCompiler.get_select_precolumns(self, select)
+    def get_select_precolumns(self, select, **kw):
+        s = compiler.SQLCompiler.get_select_precolumns(self, select, **kw)
         if select._has_row_limiting_clause:
             s += "TOP %s " % (select._limit,)
         return s
