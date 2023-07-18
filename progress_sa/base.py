@@ -138,6 +138,9 @@ class ProgressDialect(default.DefaultDialect):
     def __init__(self, **params):
         super(ProgressDialect, self).__init__(**params)
         self.text_as_varchar = False
+    
+    def _dialect_specific_select_one(self):
+        return 'SELECT 1 from pub."_FILE" where 1=0'
 
     def _check_unicode_returns(self, connection):
         return True
