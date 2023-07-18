@@ -139,6 +139,7 @@ class ProgressDialect(default.DefaultDialect):
         super(ProgressDialect, self).__init__(**params)
         self.text_as_varchar = False
     
+    @util.memoized_property
     def _dialect_specific_select_one(self):
         return 'SELECT 1 from pub."_FILE" where 1=0'
 
